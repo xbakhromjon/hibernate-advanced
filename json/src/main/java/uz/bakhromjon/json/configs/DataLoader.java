@@ -1,5 +1,6 @@
 package uz.bakhromjon.json.configs;
 
+import com.vladmihalcea.hibernate.type.json.internal.JacksonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -27,7 +28,16 @@ public class DataLoader implements CommandLineRunner {
                 "   \"publisher\": \"Amazon\"," +
                 "   \"price\": 44.99" +
                 "}");
+        book.setPropertiesJson(JacksonUtil.toJsonNode(
+                "{" +
+                        "   \"title\": \"High-Performance Java Persistence\"," +
+                        "   \"author\": \"Vlad Mihalcea\"," +
+                        "   \"publisher\": \"Amazon\"," +
+                        "   \"price\": 44.99" +
+                        "}"
+        ));
 
         book = bookRepository.save(book);
+        System.out.println(book.getPropertiesJson().get("title"));
     }
 }
