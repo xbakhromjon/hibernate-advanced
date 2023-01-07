@@ -13,6 +13,9 @@ import lombok.Setter;
 import org.hibernate.annotations.NaturalId;
 import org.hibernate.annotations.Type;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 @Setter
 @Getter
@@ -34,4 +37,10 @@ public class Book {
     @Type(JsonType.class)
     @Column(columnDefinition = "jsonb")
     private JsonNode propertiesJson;
+
+
+
+    @Type(JsonType.class)
+    @Column(columnDefinition = "jsonb")
+    private Map<String, String> propertiesMap = new HashMap<>();
 }
