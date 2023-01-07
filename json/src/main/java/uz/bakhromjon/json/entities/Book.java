@@ -13,8 +13,11 @@ import lombok.Setter;
 import org.hibernate.annotations.NaturalId;
 import org.hibernate.annotations.Type;
 import uz.bakhromjon.json.jsonObjects.BookRecord;
+import uz.bakhromjon.json.jsonObjects.DiscountCoupon;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -47,4 +50,8 @@ public class Book {
     @Type(JsonType.class)
     @Column(columnDefinition = "jsonb")
     private Map<String, String> propertiesMap = new HashMap<>();
+
+    @Type(JsonType.class)
+    @Column(columnDefinition = "jsonb")
+    private List<DiscountCoupon> coupons = new ArrayList<>();
 }
