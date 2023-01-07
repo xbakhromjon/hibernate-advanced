@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.NaturalId;
 import org.hibernate.annotations.Type;
+import uz.bakhromjon.json.jsonObjects.BookRecord;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -39,6 +40,9 @@ public class Book {
     private JsonNode propertiesJson;
 
 
+    @Type(JsonType.class)
+    @Column(columnDefinition = "JSON")
+    private BookRecord propertiesRecord;
 
     @Type(JsonType.class)
     @Column(columnDefinition = "jsonb")

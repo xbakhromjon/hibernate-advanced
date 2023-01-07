@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Type;
+import uz.bakhromjon.json.jsonObjects.Location;
 
 import java.util.ArrayList;
 import java.util.List;

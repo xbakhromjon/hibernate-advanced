@@ -1,4 +1,4 @@
-package uz.bakhromjon.json.entities;
+package uz.bakhromjon.json.jsonObjects;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

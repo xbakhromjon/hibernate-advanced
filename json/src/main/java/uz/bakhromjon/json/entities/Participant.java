@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Type;
+import uz.bakhromjon.json.jsonObjects.Ticket;
 
 
 @Setter
