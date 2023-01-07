@@ -8,6 +8,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Type;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Setter
 @Getter
@@ -21,6 +24,10 @@ public class Event {
     @Type(JsonType.class)
     @Column(columnDefinition = "json")
     private Location location;
+
+    @Type(JsonType.class)
+    @Column(columnDefinition = "jsonb")
+    private List<Location> alternativeLocations = new ArrayList<Location>();
 
     public Event(Location location) {
         this.location = location;

@@ -5,9 +5,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import uz.bakhromjon.json.entities.Book;
+import uz.bakhromjon.json.entities.Event;
+import uz.bakhromjon.json.entities.Location;
 import uz.bakhromjon.json.repositories.BookRepository;
 import uz.bakhromjon.json.repositories.EventRepository;
 import uz.bakhromjon.json.repositories.ParticipantRepository;
+
+import java.util.List;
 
 @Component
 public class DataLoader implements CommandLineRunner {
@@ -20,24 +24,11 @@ public class DataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Book book = new Book();
-        book.setIsbn("978-9730228236");
-        book.setProperties("{" +
-                "   \"title\": \"High-Performance Java Persistence\"," +
-                "   \"author\": \"Vlad Mihalcea\"," +
-                "   \"publisher\": \"Amazon\"," +
-                "   \"price\": 44.99" +
-                "}");
-        book.setPropertiesJson(JacksonUtil.toJsonNode(
-                "{" +
-                        "   \"title\": \"High-Performance Java Persistence\"," +
-                        "   \"author\": \"Vlad Mihalcea\"," +
-                        "   \"publisher\": \"Amazon\"," +
-                        "   \"price\": 44.99" +
-                        "}"
-        ));
+        Event event = new Event();
+        event.setLocation(new Location("uzb", "tashkent"));
+        event.setAlternativeLocations(List.of(new Location("usa", "new-york"),
+                new Location("uk", "london")));
+        event = eventRepository.save(event);
 
-        book = bookRepository.save(book);
-        System.out.println(book.getPropertiesJson().get("title"));
     }
 }
