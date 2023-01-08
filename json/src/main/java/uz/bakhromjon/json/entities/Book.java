@@ -10,6 +10,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.NaturalId;
 import org.hibernate.annotations.Type;
 import uz.bakhromjon.json.jsonObjects.BookRecord;
@@ -26,6 +27,7 @@ import java.util.Map;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@DynamicUpdate
 public class Book {
     @Id
     @GeneratedValue
@@ -34,6 +36,9 @@ public class Book {
     @NaturalId
     private String isbn;
 
+    private String title;
+    private String author;
+
     @Type(JsonType.class)
     @Column(columnDefinition = "jsonb")
     private String properties;
@@ -41,7 +46,6 @@ public class Book {
     @Type(JsonType.class)
     @Column(columnDefinition = "jsonb")
     private JsonNode propertiesJson;
-
 
     @Type(JsonType.class)
     @Column(columnDefinition = "JSON")

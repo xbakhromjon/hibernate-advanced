@@ -1,5 +1,9 @@
 package uz.bakhromjon.json.configs;
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.PersistenceUnit;
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -17,6 +21,7 @@ import java.util.HashMap;
 import java.util.List;
 
 @Component
+@PersistenceUnit
 public class DataLoader implements CommandLineRunner {
     @Autowired
     private EventRepository eventRepository;
@@ -30,10 +35,21 @@ public class DataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        User user = new User();
-        user.setDetails(new UserDetails("Vlad", "Mihalcea", "info@vladmihalcea.com"));
+        Book book = new Book();
+        book.setIsbn("978-9730228236");
+        book.setProperties("{" +
+                "   \"title\": \"High-Performance Java Persistence\"," +
+                "   \"author\": \"Vlad Mihalcea\"," +
+                "   \"publisher\": \"Amazon\"," +
+                "   \"price\": 44.99" +
+                "}");
+        book.setAuthor("Vlad Mihalcea");
 
-        userRepository.save(user);
-        user = userRepository.findById(1L).get();
+        book = bookRepository.save(book);
+        book.setTitle(
+                "High-Performance Java Persistence, 2nd edition"
+        );
+        bookRepository.save(book);
+
     }
 }
