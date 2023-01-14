@@ -3,12 +3,10 @@ package uz.bakhromjon.basictypesmappings.configs;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-import uz.bakhromjon.basictypesmappings.entities.AnnualSubscription;
+import uz.bakhromjon.basictypesmappings.entities.Hero;
 import uz.bakhromjon.basictypesmappings.repositories.AnnualSubscriptionRepository;
 import uz.bakhromjon.basictypesmappings.repositories.EventRepository;
-
-import java.time.LocalDateTime;
-import java.time.MonthDay;
+import uz.bakhromjon.basictypesmappings.repositories.HeroRepository;
 
 @Component
 public class DataLoader implements CommandLineRunner {
@@ -17,11 +15,13 @@ public class DataLoader implements CommandLineRunner {
     private EventRepository eventRepository;
     @Autowired
     private AnnualSubscriptionRepository annualSubscriptionRepository;
+    @Autowired
+    private HeroRepository heroRepository;
 
     @Override
     public void run(String... args) throws Exception {
-        AnnualSubscription annualSubscription = new AnnualSubscription(1L, 1, MonthDay.of(1, 1));
-        annualSubscriptionRepository.save(annualSubscription);
+//        Hero hero = new Hero(1L, "Fname", "Lname", "Mname1", "Mname2", "Mname3", "Mname4", "Mname5");
+//        heroRepository.save(hero);
     }
 }
 
