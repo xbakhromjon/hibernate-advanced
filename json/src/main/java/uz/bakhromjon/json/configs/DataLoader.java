@@ -1,5 +1,6 @@
 package uz.bakhromjon.json.configs;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.PersistenceUnit;
