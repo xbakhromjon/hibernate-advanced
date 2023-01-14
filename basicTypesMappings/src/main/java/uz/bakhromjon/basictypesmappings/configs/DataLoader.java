@@ -12,6 +12,7 @@ import java.time.MonthDay;
 
 @Component
 public class DataLoader implements CommandLineRunner {
+
     @Autowired
     private EventRepository eventRepository;
     @Autowired
